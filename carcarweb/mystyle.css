@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(255, 254, 201);
+    font-family: Arial, Helvetica, sans-serif;
+}
+  
+h1 {
+    color: rgb(88, 0, 37);
+    margin-left: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.ascii {
+    font-family: 'Courier New', Courier, monospace;
+}

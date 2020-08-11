@@ -20,7 +20,6 @@ if ($row = $resultset->fetch_assoc()) {
     $contact_number = $row["contact_number"];
     $member_type = $row["member_type"];
 }
-echo "<b>Customer Name</b>: <b>".$customer_name."</b><br/><br/>";
 ?>
 
 <html>
@@ -34,7 +33,8 @@ echo "<b>Customer Name</b>: <b>".$customer_name."</b><br/><br/>";
 <h1>Update Customer Form</h1>
 
 <!----start of the customer form--->
-<form method="post" action="new_customers_action.php">
+<form method="post" action="update_customers_form_action.php">
+<input type="hidden" name="customer_id" value="<?php echo $customer_id; ?>"/>
 <table border="0" width=80%>
 <tr>
     <td>Name:</td><td><?php echo $customer_name ?></td>
@@ -44,24 +44,33 @@ echo "<b>Customer Name</b>: <b>".$customer_name."</b><br/><br/>";
 </tr>
 <tr>
     <td valign="top">Address:</td>
-    <td><textarea name="address" id="address" cols="30" rows="4"></textarea></td>
+    <td><textarea name="address" id="address" cols="30" rows="4"><?php echo $address ?></textarea></td>
 </tr>
 <tr>
-    <td>Contact:</td><td><input type="text" name="contact"></td>
+    <td>Contact:</td><td><input type="text" name="contact" value="<?php echo $contact_number ?>"></td>
 </tr>
 <tr>
     <td>Membership:</td>
     <td>
-    <select name="membership" id="membership">
-        <option value="Platinum">Platinum</option>
-        <option value="Gold">Gold</option>
-        <option value="Silver">Silver</option>
-        <option value="Classic" SELECTED>Classic</option>
-    </select>
+    <?php
+    $membership_array = array(
+        "Platinum", "Gold", "Silver", "Classic"
+    );
+    // construct the select tag by iterating through the membership_array
+    echo '<select name="membership" id="membership">';
+    for ($i=0 ; $i < count($membership_array); $i++) {
+        echo '<option value="'. $membership_array[$i] . '"';
+        if ($member_type == $membership_array[$i]) {
+            echo " SELECTED";     // print SELECTED if member is this type
+        }
+        echo '>' . $membership_array[$i] .'</option>';
+    }
+    echo "</select>";
+    ?>
     </td>
 </tr>
 <tr>
-    <td colspan="2" align="center"><input type="submit" value="Create Customer">
+    <td colspan="2" align="center"><input type="submit" value="Update Details">
     <input type="reset" value="Reset">
     </td>
 </tr>

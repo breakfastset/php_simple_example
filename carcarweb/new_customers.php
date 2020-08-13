@@ -1,3 +1,6 @@
+<?php
+include 'session_check.php';
+?>
 <html>
 <head>
 <title>New Customer Form</title>

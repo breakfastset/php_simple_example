@@ -1,4 +1,5 @@
 <?php
+include 'session_check.php';
 include 'db_include.php';
 
 $sql = "SELECT customer_id, customer_name, dob, address, contact_number, member_type " . 

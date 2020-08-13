@@ -1,4 +1,5 @@
 <?php
+include 'session_check.php';
 include 'db_include.php';
 
 $customer_id = $_GET["cust_id"];
